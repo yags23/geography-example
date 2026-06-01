@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Australia Population Quest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ocean: "#0b74b8",
+              reef: "#0f9f8f",
+              gum: "#2f7d32",
+              sand: "#f1dfb8",
+              paper: "#fffdf7",
+              ink: "#1b2b34"
+            },
+            boxShadow: {
+              classroom: "0 14px 36px rgba(16, 48, 64, 0.14)"
+            },
+            keyframes: {
+              lift: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-4px)" }
+              },
+              pop: {
+                "0%": { transform: "scale(0.96)", opacity: "0.5" },
+                "100%": { transform: "scale(1)", opacity: "1" }
+              }
+            },
+            animation: {
+              lift: "lift 2.8s ease-in-out infinite",
+              pop: "pop 180ms ease-out"
+            }
+          }
+        }
+      };
+    </script>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(90deg, rgba(15, 159, 143, 0.08) 1px, transparent 1px),
+          linear-gradient(rgba(11, 116, 184, 0.07) 1px, transparent 1px),
+          #f8f3e5;
+        background-size: 34px 34px;
+        color: #1b2b34;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      .quest-card {
+        border: 1px solid rgba(27, 43, 52, 0.12);
+        border-radius: 8px;
+        background: rgba(255, 253, 247, 0.96);
+        box-shadow: 0 14px 36px rgba(16, 48, 64, 0.11);
+      }
+
+      .soft-panel {
+        border: 1px solid rgba(27, 43, 52, 0.1);
+        border-radius: 8px;
+        background: rgba(255, 253, 247, 0.72);
+      }
+
+      .map-board {
+        display: grid;
+        grid-template-columns: repeat(8, minmax(62px, 1fr));
+        grid-template-rows: repeat(6, minmax(74px, 1fr));
+        gap: 8px;
+        min-height: 540px;
+      }
+
+      .map-tile {
+        position: relative;
+        min-height: 74px;
+        overflow: hidden;
+        border: 2px solid rgba(255, 255, 255, 0.92);
+        border-radius: 8px;
+        box-shadow: inset 0 0 0 1px rgba(27, 43, 52, 0.12);
+        transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+      }
+
+      .map-tile:hover,
+      .map-tile:focus-visible {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 24px rgba(16, 48, 64, 0.18);
+        filter: saturate(1.08);
+        outline: none;
+      }
+
+      .map-tile.selected {
+        box-shadow: 0 0 0 4px rgba(255, 253, 247, 0.96), 0 0 0 8px rgba(11, 116, 184, 0.5);
+      }
+
+      .map-wa {
+        grid-column: 1 / span 3;
+        grid-row: 2 / span 3;
+      }
+
+      .map-nt {
+        grid-column: 4 / span 2;
+        grid-row: 1 / span 2;
+      }
+
+      .map-sa {
+        grid-column: 4 / span 2;
+        grid-row: 3 / span 2;
+      }
+
+      .map-qld {
+        grid-column: 6 / span 3;
+        grid-row: 1 / span 3;
+      }
+
+      .map-nsw {
+        grid-column: 6 / span 2;
+        grid-row: 4 / span 1;
+      }
+
+      .map-act {
+        grid-column: 8 / span 1;
+        grid-row: 4 / span 1;
+      }
+
+      .map-vic {
+        grid-column: 6 / span 2;
+        grid-row: 5 / span 1;
+      }
+
+      .map-tas {
+        grid-column: 7 / span 1;
+        grid-row: 6 / span 1;
+      }
+
+      .map-label-zone {
+        min-height: 54px;
+      }
+
+      .drag-token {
+        touch-action: manipulation;
+        user-select: none;
+      }
+
+      .progress-fill {
+        transition: width 260ms ease;
+      }
+
+      @media (max-width: 840px) {
+        .map-board {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          grid-template-rows: none;
+          min-height: 0;
+        }
+
+        .map-wa,
+        .map-nt,
+        .map-sa,
+        .map-qld,
+        .map-nsw,
+        .map-act,
+        .map-vic,
+        .map-tas {
+          grid-column: auto;
+          grid-row: auto;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .map-board {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      Australia Population Quest needs JavaScript enabled.
+    </noscript>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel" data-presets="react" src="./src/data.js"></script>
+    <script type="text/babel" data-presets="react" src="./src/App.jsx"></script>
+  </body>
+</html>
