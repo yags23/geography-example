@@ -97,6 +97,83 @@ const CITY_FACTOR_LABELS = {
   availableLand: "Available land"
 };
 
+const MAP_REGIONS = {
+  wa: {
+    fill: "#2f7d32",
+    labelX: 260,
+    labelY: 360,
+    tokenX: 145,
+    tokenY: 385,
+    tokenWidth: 230,
+    d: "M155 142 C122 156 94 194 83 242 C75 279 82 315 65 356 C51 393 83 449 113 494 C153 553 236 562 305 524 L386 500 L386 151 C311 124 225 118 155 142 Z"
+  },
+  nt: {
+    fill: "#d97706",
+    labelX: 475,
+    labelY: 222,
+    tokenX: 405,
+    tokenY: 237,
+    tokenWidth: 145,
+    d: "M386 151 C427 134 483 105 532 125 C561 137 580 166 566 199 L566 306 L386 306 Z"
+  },
+  qld: {
+    fill: "#0b74b8",
+    labelX: 692,
+    labelY: 283,
+    tokenX: 630,
+    tokenY: 302,
+    tokenWidth: 170,
+    d: "M566 139 C637 121 737 156 789 230 C835 295 831 374 788 431 C762 451 716 447 662 433 L662 306 L566 306 Z"
+  },
+  sa: {
+    fill: "#65a30d",
+    labelX: 520,
+    labelY: 405,
+    tokenX: 420,
+    tokenY: 425,
+    tokenWidth: 190,
+    d: "M386 306 L662 306 L662 501 L546 531 L386 500 Z"
+  },
+  nsw: {
+    fill: "#2563eb",
+    labelX: 736,
+    labelY: 466,
+    tokenX: 664,
+    tokenY: 498,
+    tokenWidth: 155,
+    d: "M662 433 C716 447 762 451 788 431 C815 470 804 525 762 562 C731 588 694 574 662 546 Z"
+  },
+  vic: {
+    fill: "#0e7490",
+    labelX: 655,
+    labelY: 573,
+    tokenX: 578,
+    tokenY: 592,
+    tokenWidth: 180,
+    d: "M546 531 L662 501 L662 546 C694 574 731 588 762 562 C748 603 704 627 649 614 C609 605 576 576 546 531 Z"
+  },
+  tas: {
+    fill: "#15803d",
+    labelX: 680,
+    labelY: 655,
+    tokenX: 606,
+    tokenY: 672,
+    tokenWidth: 150,
+    hidePopulation: true,
+    d: "M641 639 C662 612 704 612 731 641 C718 681 672 694 640 666 C632 658 633 649 641 639 Z"
+  },
+  act: {
+    fill: "#0f766e",
+    labelX: 724,
+    labelY: 531,
+    tokenX: 690,
+    tokenY: 539,
+    tokenWidth: 95,
+    hidePopulation: true,
+    d: "M708 510 C713 497 736 497 742 512 C748 528 734 541 716 536 C706 533 702 520 708 510 Z"
+  }
+};
+
 function formatNumber(value) {
   return Number(value).toLocaleString("en-AU");
 }
@@ -465,54 +542,119 @@ function AustraliaMap({
   challenge = false
 }) {
   return (
-    <div className={`map-board ${compact ? "min-h-[430px]" : ""}`} aria-label="Australia state and territory map">
-      {STATES.map((state) => (
-        <button
-          key={state.id}
-          type="button"
-          onClick={() => onSelect(state.id)}
-          onDragOver={(event) => {
-            if (onDropState) event.preventDefault();
-          }}
-          onDrop={(event) => {
-            if (onDropState) {
-              event.preventDefault();
-              onDropState(state.id, event);
-            }
-          }}
-          className={`map-tile ${state.mapClass} ${state.colour} p-3 text-left text-white ${
-            selectedId === state.id ? "selected" : ""
-          }`}
-        >
-          <div className="flex h-full flex-col justify-between gap-2">
-            <div>
-              <div className="flex items-center justify-between gap-2">
-                <span className="text-2xl font-black sm:text-3xl">{state.short}</span>
-                <span className="rounded-lg bg-white/20 px-2 py-1 text-[11px] font-black uppercase tracking-normal">
-                  {state.type}
-                </span>
-              </div>
-              <p className="mt-1 text-sm font-bold leading-snug text-white/90">{state.name}</p>
-            </div>
-            {challenge ? (
-              <div className="map-label-zone flex flex-wrap content-end gap-1">
-                {(placedByState[state.id] || []).map((token) => (
-                  <span
-                    key={token.id}
-                    className="animate-pop rounded-lg bg-white px-2 py-1 text-[11px] font-black text-ink shadow-sm"
-                  >
-                    {token.text}
-                  </span>
-                ))}
-              </div>
-            ) : (
-              <div className="rounded-lg bg-white/18 px-2 py-1 text-xs font-bold text-white">
-                {formatNumber(state.population)}
-              </div>
-            )}
-          </div>
-        </button>
-      ))}
+    <div
+      className={`australia-map-shell ${compact ? "compact" : ""}`}
+      aria-label="Australia state and territory map"
+    >
+      <svg className="australia-map" viewBox="0 0 920 720" role="img" aria-label="Clickable map of Australia">
+        <defs>
+          <pattern id="oceanDots" width="32" height="32" patternUnits="userSpaceOnUse">
+            <circle cx="2" cy="2" r="1.5" fill="rgba(11, 116, 184, 0.22)" />
+          </pattern>
+        </defs>
+
+        <rect x="0" y="0" width="920" height="720" fill="url(#oceanDots)" opacity="0.38" />
+        <text x="100" y="180" fill="rgba(27, 43, 52, 0.35)" fontSize="18" fontWeight="800">
+          Indian Ocean
+        </text>
+        <text x="746" y="196" fill="rgba(27, 43, 52, 0.35)" fontSize="18" fontWeight="800">
+          Coral Sea
+        </text>
+        <text x="704" y="616" fill="rgba(27, 43, 52, 0.35)" fontSize="18" fontWeight="800">
+          Tasman Sea
+        </text>
+        <path
+          d="M155 142 C122 156 94 194 83 242 C75 279 82 315 65 356 C51 393 83 449 113 494 C153 553 236 562 305 524 L386 500 L546 531 C576 576 609 605 649 614 C704 627 748 603 762 562 C804 525 815 470 788 431 C831 374 835 295 789 230 C737 156 637 121 566 139 C556 116 519 101 474 112 C440 119 412 137 386 151 C311 124 225 118 155 142 Z"
+          fill="rgba(255, 253, 247, 0.46)"
+          stroke="rgba(27, 43, 52, 0.1)"
+          strokeWidth="16"
+          strokeLinejoin="round"
+        />
+
+        {STATES.map((state) => {
+          const region = MAP_REGIONS[state.id];
+          const placedTokens = placedByState[state.id] || [];
+          const isSelected = selectedId === state.id;
+
+          return (
+            <g
+              key={state.id}
+              role="button"
+              tabIndex="0"
+              aria-label={`${state.name}, ${state.type}, capital ${state.capital}, population ${formatNumber(
+                state.population
+              )}`}
+              className={`map-region ${isSelected ? "selected" : ""}`}
+              style={{ "--region-fill": region.fill }}
+              onClick={() => onSelect(state.id)}
+              onKeyDown={(event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                  event.preventDefault();
+                  onSelect(state.id);
+                }
+              }}
+              onDragOver={(event) => {
+                if (onDropState) event.preventDefault();
+              }}
+              onDrop={(event) => {
+                if (onDropState) {
+                  event.preventDefault();
+                  onDropState(state.id, event);
+                }
+              }}
+            >
+              <title>{state.name}</title>
+              <path d={region.d} />
+              <rect
+                className="map-region-badge"
+                x={region.labelX - 38}
+                y={region.labelY - 33}
+                width="76"
+                height={challenge ? "50" : "64"}
+                rx="8"
+              />
+              <text className="map-region-label" x={region.labelX} y={region.labelY} textAnchor="middle">
+                {state.short}
+              </text>
+              {!challenge && !region.hidePopulation && (
+                <text
+                  className="map-region-population"
+                  x={region.labelX}
+                  y={region.labelY + 23}
+                  textAnchor="middle"
+                >
+                  {formatNumber(state.population)}
+                </text>
+              )}
+              {challenge && placedTokens.length > 0 && (
+                <foreignObject
+                  x={region.tokenX}
+                  y={region.tokenY}
+                  width={region.tokenWidth}
+                  height="92"
+                  pointerEvents="none"
+                >
+                  <div className="map-token-stack">
+                    {placedTokens.map((token) => (
+                      <span key={token.id} className="animate-pop">
+                        {token.text}
+                      </span>
+                    ))}
+                  </div>
+                </foreignObject>
+              )}
+            </g>
+          );
+        })}
+
+        <g aria-hidden="true" transform="translate(828 42)">
+          <circle cx="24" cy="24" r="23" fill="rgba(255, 253, 247, 0.82)" stroke="rgba(27, 43, 52, 0.16)" />
+          <path d="M24 6 L31 24 L24 42 L17 24 Z" fill="#0b74b8" opacity="0.86" />
+          <text x="24" y="14" textAnchor="middle" fontSize="12" fontWeight="900" fill="#1b2b34">
+            N
+          </text>
+        </g>
+      </svg>
     </div>
   );
 }
