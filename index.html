@@ -102,6 +102,7 @@
         stroke: rgba(255, 253, 247, 0.98);
         stroke-width: 5;
         stroke-linejoin: round;
+        stroke-linecap: round;
         filter: drop-shadow(0 8px 12px rgba(16, 48, 64, 0.16));
         transition: filter 160ms ease, opacity 160ms ease, transform 160ms ease;
       }
@@ -144,6 +145,82 @@
         fill: rgba(255, 255, 255, 0.19);
         stroke: rgba(255, 255, 255, 0.34);
         stroke-width: 1;
+      }
+
+      .map-info-label,
+      .map-compact-label {
+        color: #ffffff;
+        font-weight: 900;
+        line-height: 1.08;
+        pointer-events: none;
+        text-shadow: 0 2px 8px rgba(27, 43, 52, 0.38);
+      }
+
+      .map-info-label .map-code {
+        font-size: 42px;
+        letter-spacing: 0;
+      }
+
+      .map-info-label .map-name {
+        font-size: 17px;
+        margin-top: 2px;
+      }
+
+      .map-info-label .map-stat {
+        align-items: baseline;
+        display: flex;
+        gap: 7px;
+        font-size: 14px;
+        margin-top: 8px;
+        white-space: nowrap;
+      }
+
+      .map-info-label .map-stat-label {
+        background: rgba(255, 255, 255, 0.22);
+        border-radius: 8px;
+        font-size: 10px;
+        padding: 2px 5px;
+        text-transform: uppercase;
+      }
+
+      .map-compact-label {
+        text-align: center;
+      }
+
+      .map-compact-label .map-code {
+        font-size: 28px;
+      }
+
+      .map-compact-label .map-pop {
+        font-size: 12px;
+      }
+
+      .map-callout-line {
+        fill: none;
+        stroke: var(--region-fill);
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2.4;
+      }
+
+      .map-info-label.callout {
+        color: #1b2b34;
+        text-shadow: none;
+      }
+
+      .map-info-label.callout .map-code {
+        color: var(--region-fill);
+        font-size: 30px;
+      }
+
+      .map-info-label.callout .map-name,
+      .map-info-label.callout .map-stat {
+        color: #1b2b34;
+        font-size: 13px;
+      }
+
+      .map-info-label.callout .map-stat-label {
+        background: rgba(27, 43, 52, 0.08);
       }
 
       .map-token-stack {

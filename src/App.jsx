@@ -99,78 +99,104 @@ const CITY_FACTOR_LABELS = {
 
 const MAP_REGIONS = {
   wa: {
-    fill: "#2f7d32",
-    labelX: 260,
-    labelY: 360,
-    tokenX: 145,
-    tokenY: 385,
+    fill: "#73b947",
+    labelX: 245,
+    labelY: 365,
+    tokenX: 140,
+    tokenY: 392,
     tokenWidth: 230,
-    d: "M155 142 C122 156 94 194 83 242 C75 279 82 315 65 356 C51 393 83 449 113 494 C153 553 236 562 305 524 L386 500 L386 151 C311 124 225 118 155 142 Z"
+    infoX: 140,
+    infoY: 282,
+    infoWidth: 245,
+    d: "M392 156 C374 140 371 125 354 117 C315 101 278 92 250 103 C232 113 230 134 212 141 C191 149 187 171 168 185 C139 206 114 224 91 232 C80 236 74 250 77 263 C61 268 57 292 66 309 C53 332 54 358 68 381 C78 398 78 419 91 437 C103 454 119 468 119 493 C119 510 132 519 148 514 C153 533 176 535 190 549 C213 570 252 560 270 543 C294 521 315 519 344 523 C363 525 377 515 392 507 Z"
   },
   nt: {
-    fill: "#d97706",
-    labelX: 475,
-    labelY: 222,
-    tokenX: 405,
-    tokenY: 237,
-    tokenWidth: 145,
-    d: "M386 151 C427 134 483 105 532 125 C561 137 580 166 566 199 L566 306 L386 306 Z"
+    fill: "#f28c18",
+    labelX: 495,
+    labelY: 215,
+    tokenX: 414,
+    tokenY: 232,
+    tokenWidth: 170,
+    infoX: 420,
+    infoY: 145,
+    infoWidth: 180,
+    d: "M392 156 C425 126 433 96 470 86 C489 81 506 95 528 76 C560 52 598 61 622 83 C641 102 623 120 648 139 C629 153 612 157 598 163 L598 318 L392 318 Z"
   },
   qld: {
-    fill: "#0b74b8",
-    labelX: 692,
-    labelY: 283,
-    tokenX: 630,
-    tokenY: 302,
-    tokenWidth: 170,
-    d: "M566 139 C637 121 737 156 789 230 C835 295 831 374 788 431 C762 451 716 447 662 433 L662 306 L566 306 Z"
+    fill: "#2f80d4",
+    labelX: 748,
+    labelY: 270,
+    tokenX: 685,
+    tokenY: 295,
+    tokenWidth: 195,
+    infoX: 660,
+    infoY: 202,
+    infoWidth: 205,
+    d: "M598 163 C623 156 638 143 648 139 C671 126 685 66 704 24 C727 43 734 92 727 124 C748 117 771 136 779 159 C819 172 842 205 854 247 C882 274 886 322 903 354 C919 384 901 417 874 431 C863 438 862 452 845 459 C830 466 812 453 801 468 L642 468 L642 318 L598 318 Z"
   },
   sa: {
-    fill: "#65a30d",
-    labelX: 520,
-    labelY: 405,
-    tokenX: 420,
-    tokenY: 425,
-    tokenWidth: 190,
-    d: "M386 306 L662 306 L662 501 L546 531 L386 500 Z"
+    fill: "#f9c43a",
+    labelX: 525,
+    labelY: 425,
+    tokenX: 424,
+    tokenY: 444,
+    tokenWidth: 205,
+    infoX: 430,
+    infoY: 362,
+    infoWidth: 210,
+    d: "M392 318 L642 318 L642 547 C619 558 598 577 582 602 C563 602 544 586 535 562 C523 595 503 603 486 573 C469 540 435 522 392 507 Z"
   },
   nsw: {
-    fill: "#2563eb",
-    labelX: 736,
-    labelY: 466,
-    tokenX: 664,
-    tokenY: 498,
-    tokenWidth: 155,
-    d: "M662 433 C716 447 762 451 788 431 C815 470 804 525 762 562 C731 588 694 574 662 546 Z"
+    fill: "#735cc7",
+    labelX: 740,
+    labelY: 505,
+    tokenX: 672,
+    tokenY: 532,
+    tokenWidth: 190,
+    infoX: 678,
+    infoY: 455,
+    infoWidth: 205,
+    d: "M642 468 L801 468 C812 453 830 466 845 459 C870 476 874 514 858 546 C846 571 821 598 790 610 C760 621 731 608 708 596 C683 582 659 568 642 547 Z"
   },
   vic: {
-    fill: "#0e7490",
-    labelX: 655,
-    labelY: 573,
-    tokenX: 578,
-    tokenY: 592,
-    tokenWidth: 180,
-    d: "M546 531 L662 501 L662 546 C694 574 731 588 762 562 C748 603 704 627 649 614 C609 605 576 576 546 531 Z"
+    fill: "#0fa3a9",
+    labelX: 680,
+    labelY: 618,
+    tokenX: 600,
+    tokenY: 632,
+    tokenWidth: 185,
+    infoX: 602,
+    infoY: 585,
+    infoWidth: 220,
+    d: "M642 547 C659 568 683 582 708 596 C731 608 760 621 790 610 C779 640 747 656 711 652 C681 649 656 633 636 613 C620 631 596 623 579 602 C594 579 616 560 642 547 Z"
   },
   tas: {
-    fill: "#15803d",
-    labelX: 680,
-    labelY: 655,
-    tokenX: 606,
-    tokenY: 672,
-    tokenWidth: 150,
-    hidePopulation: true,
-    d: "M641 639 C662 612 704 612 731 641 C718 681 672 694 640 666 C632 658 633 649 641 639 Z"
+    fill: "#16aeb8",
+    labelX: 735,
+    labelY: 676,
+    tokenX: 678,
+    tokenY: 680,
+    tokenWidth: 145,
+    infoX: 830,
+    infoY: 612,
+    infoWidth: 150,
+    calloutLine: "752,671 795,671 823,641",
+    callout: true,
+    d: "M693 662 C718 641 757 644 782 664 C774 697 736 722 700 705 C681 696 678 675 693 662 Z"
   },
   act: {
-    fill: "#0f766e",
-    labelX: 724,
-    labelY: 531,
-    tokenX: 690,
-    tokenY: 539,
-    tokenWidth: 95,
-    hidePopulation: true,
-    d: "M708 510 C713 497 736 497 742 512 C748 528 734 541 716 536 C706 533 702 520 708 510 Z"
+    fill: "#c75a70",
+    labelX: 811,
+    labelY: 548,
+    tokenX: 825,
+    tokenY: 525,
+    tokenWidth: 135,
+    infoX: 838,
+    infoY: 474,
+    infoWidth: 158,
+    calloutLine: "811,548 842,548 866,518",
+    callout: true,
+    d: "M798 532 C803 519 825 519 830 533 C835 548 822 561 806 556 C797 553 793 541 798 532 Z"
   }
 };
 
@@ -533,6 +559,36 @@ function EvidenceLine({ label, text }) {
   );
 }
 
+function MapInfoLabel({ state, callout = false }) {
+  return (
+    <div className={`map-info-label ${callout ? "callout" : ""}`}>
+      <div className="map-code">{state.short}</div>
+      <div className="map-name">{state.name}</div>
+      <div className="map-stat">
+        <span className="map-stat-label">Pop</span>
+        <span>{formatNumber(state.population)}</span>
+      </div>
+      <div className="map-stat">
+        <span className="map-stat-label">Area</span>
+        <span>{formatNumber(state.areaKm2)} km2</span>
+      </div>
+      <div className="map-stat">
+        <span className="map-stat-label">Capital</span>
+        <span>{state.capital}</span>
+      </div>
+    </div>
+  );
+}
+
+function MapCompactLabel({ state, showPopulation = true }) {
+  return (
+    <div className="map-compact-label">
+      <div className="map-code">{state.short}</div>
+      {showPopulation && <div className="map-pop">{formatNumber(state.population)}</div>}
+    </div>
+  );
+}
+
 function AustraliaMap({
   selectedId,
   onSelect,
@@ -546,44 +602,46 @@ function AustraliaMap({
       className={`australia-map-shell ${compact ? "compact" : ""}`}
       aria-label="Australia state and territory map"
     >
-      <svg className="australia-map" viewBox="0 0 920 720" role="img" aria-label="Clickable map of Australia">
+      <svg className="australia-map" viewBox="0 0 1000 720" role="img" aria-label="Clickable map of Australia">
         <defs>
           <pattern id="oceanDots" width="32" height="32" patternUnits="userSpaceOnUse">
             <circle cx="2" cy="2" r="1.5" fill="rgba(11, 116, 184, 0.22)" />
           </pattern>
         </defs>
 
-        <rect x="0" y="0" width="920" height="720" fill="url(#oceanDots)" opacity="0.38" />
-        <text x="100" y="180" fill="rgba(27, 43, 52, 0.35)" fontSize="18" fontWeight="800">
+        <rect x="0" y="0" width="1000" height="720" fill="url(#oceanDots)" opacity="0.38" />
+        <text x="82" y="190" fill="rgba(27, 43, 52, 0.35)" fontSize="18" fontWeight="800">
           Indian Ocean
         </text>
-        <text x="746" y="196" fill="rgba(27, 43, 52, 0.35)" fontSize="18" fontWeight="800">
+        <text x="835" y="205" fill="rgba(27, 43, 52, 0.35)" fontSize="18" fontWeight="800">
           Coral Sea
         </text>
-        <text x="704" y="616" fill="rgba(27, 43, 52, 0.35)" fontSize="18" fontWeight="800">
+        <text x="790" y="612" fill="rgba(27, 43, 52, 0.35)" fontSize="18" fontWeight="800">
           Tasman Sea
         </text>
         <path
-          d="M155 142 C122 156 94 194 83 242 C75 279 82 315 65 356 C51 393 83 449 113 494 C153 553 236 562 305 524 L386 500 L546 531 C576 576 609 605 649 614 C704 627 748 603 762 562 C804 525 815 470 788 431 C831 374 835 295 789 230 C737 156 637 121 566 139 C556 116 519 101 474 112 C440 119 412 137 386 151 C311 124 225 118 155 142 Z"
+          d="M392 156 C425 126 433 96 470 86 C489 81 506 95 528 76 C560 52 598 61 622 83 C641 102 623 120 648 139 C671 126 685 66 704 24 C727 43 734 92 727 124 C748 117 771 136 779 159 C819 172 842 205 854 247 C882 274 886 322 903 354 C919 384 901 417 874 431 C863 438 862 452 845 459 C870 476 874 514 858 546 C846 571 821 598 790 610 C779 640 747 656 711 652 C681 649 656 633 636 613 C620 631 596 623 579 602 C594 579 616 560 642 547 C619 558 598 577 582 602 C563 602 544 586 535 562 C523 595 503 603 486 573 C469 540 435 522 392 507 C377 515 363 525 344 523 C315 519 294 521 270 543 C252 560 213 570 190 549 C176 535 153 533 148 514 C132 519 119 510 119 493 C119 468 103 454 91 437 C78 419 78 398 68 381 C54 358 53 332 66 309 C57 292 61 268 77 263 C74 250 80 236 91 232 C114 224 139 206 168 185 C187 171 191 149 212 141 C230 134 232 113 250 103 C278 92 315 101 354 117 C371 125 374 140 392 156 Z"
           fill="rgba(255, 253, 247, 0.46)"
           stroke="rgba(27, 43, 52, 0.1)"
-          strokeWidth="16"
+          strokeWidth="18"
           strokeLinejoin="round"
         />
 
-        {STATES.map((state) => {
+        {STATES.map((state, index) => {
           const region = MAP_REGIONS[state.id];
           const placedTokens = placedByState[state.id] || [];
-          const isSelected = selectedId === state.id;
+          const isSelected = !challenge && selectedId === state.id;
+          const ariaLabel = challenge
+            ? `Unlabelled map region ${index + 1}`
+            : `${state.name}, ${state.type}, capital ${state.capital}, population ${formatNumber(state.population)}`;
 
           return (
             <g
               key={state.id}
+              data-state-id={state.id}
               role="button"
               tabIndex="0"
-              aria-label={`${state.name}, ${state.type}, capital ${state.capital}, population ${formatNumber(
-                state.population
-              )}`}
+              aria-label={ariaLabel}
               className={`map-region ${isSelected ? "selected" : ""}`}
               style={{ "--region-fill": region.fill }}
               onClick={() => onSelect(state.id)}
@@ -603,28 +661,29 @@ function AustraliaMap({
                 }
               }}
             >
-              <title>{state.name}</title>
+              <title>{challenge ? `Unlabelled map region ${index + 1}` : state.name}</title>
               <path d={region.d} />
-              <rect
-                className="map-region-badge"
-                x={region.labelX - 38}
-                y={region.labelY - 33}
-                width="76"
-                height={challenge ? "50" : "64"}
-                rx="8"
-              />
-              <text className="map-region-label" x={region.labelX} y={region.labelY} textAnchor="middle">
-                {state.short}
-              </text>
-              {!challenge && !region.hidePopulation && (
-                <text
-                  className="map-region-population"
-                  x={region.labelX}
-                  y={region.labelY + 23}
-                  textAnchor="middle"
+              {!challenge && region.callout && !compact && (
+                <polyline
+                  className="map-callout-line"
+                  points={region.calloutLine}
+                  style={{ "--region-fill": region.fill }}
+                />
+              )}
+              {!challenge && (
+                <foreignObject
+                  x={compact ? region.labelX - 46 : region.infoX}
+                  y={compact ? region.labelY - 31 : region.infoY}
+                  width={compact ? 92 : region.infoWidth}
+                  height={compact ? 70 : 152}
+                  pointerEvents="none"
                 >
-                  {formatNumber(state.population)}
-                </text>
+                  {compact ? (
+                    <MapCompactLabel state={state} showPopulation={!region.callout} />
+                  ) : (
+                    <MapInfoLabel state={state} callout={region.callout} />
+                  )}
+                </foreignObject>
               )}
               {challenge && placedTokens.length > 0 && (
                 <foreignObject
@@ -647,7 +706,7 @@ function AustraliaMap({
           );
         })}
 
-        <g aria-hidden="true" transform="translate(828 42)">
+        <g aria-hidden="true" transform="translate(922 42)">
           <circle cx="24" cy="24" r="23" fill="rgba(255, 253, 247, 0.82)" stroke="rgba(27, 43, 52, 0.16)" />
           <path d="M24 6 L31 24 L24 42 L17 24 Z" fill="#0b74b8" opacity="0.86" />
           <text x="24" y="14" textAnchor="middle" fontSize="12" fontWeight="900" fill="#1b2b34">
@@ -798,7 +857,7 @@ function LabelChallenge({ onStatsChange, onSelectState }) {
 
         <div className="quest-card p-3 sm:p-4">
           <AustraliaMap
-            selectedId={selectedToken ? selectedToken.stateId : undefined}
+            selectedId={undefined}
             onSelect={handleMapClick}
             onDropState={handleDrop}
             placedByState={placedByState}
@@ -926,7 +985,7 @@ function RankingGame({ completed, onComplete }) {
                       className="h-10 w-10 rounded-lg border border-ink/10 bg-white font-black text-ink disabled:opacity-35"
                       aria-label={`Move ${state.name} higher`}
                     >
-                      Up
+                      ↑
                     </button>
                     <button
                       type="button"
@@ -935,7 +994,7 @@ function RankingGame({ completed, onComplete }) {
                       className="h-10 w-10 rounded-lg border border-ink/10 bg-white font-black text-ink disabled:opacity-35"
                       aria-label={`Move ${state.name} lower`}
                     >
-                      Dn
+                      ↓
                     </button>
                   </div>
                 </div>
