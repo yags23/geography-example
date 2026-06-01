@@ -113,14 +113,14 @@ const MAP_REGIONS = {
   nt: {
     fill: "#f28c18",
     labelX: 495,
-    labelY: 215,
+    labelY: 220,
     tokenX: 414,
     tokenY: 232,
     tokenWidth: 170,
     infoX: 420,
     infoY: 145,
     infoWidth: 180,
-    d: "M392 156 C425 126 433 96 470 86 C489 81 506 95 528 76 C560 52 598 61 622 83 C641 102 623 120 648 139 C629 153 612 157 598 163 L598 318 L392 318 Z"
+    d: "M392 156 C410 135 416 109 440 96 C453 88 464 105 478 81 C492 51 511 69 525 48 C547 15 596 45 622 78 C638 101 622 122 648 139 C633 153 615 160 598 163 L598 318 L392 318 Z"
   },
   qld: {
     fill: "#2f80d4",
@@ -132,7 +132,7 @@ const MAP_REGIONS = {
     infoX: 660,
     infoY: 202,
     infoWidth: 205,
-    d: "M598 163 C623 156 638 143 648 139 C671 126 685 66 704 24 C727 43 734 92 727 124 C748 117 771 136 779 159 C819 172 842 205 854 247 C882 274 886 322 903 354 C919 384 901 417 874 431 C863 438 862 452 845 459 C830 466 812 453 801 468 L642 468 L642 318 L598 318 Z"
+    d: "M598 163 C622 156 638 145 648 139 C672 119 686 57 706 12 C730 45 733 99 724 128 C751 119 771 139 779 159 C819 172 842 205 854 247 C882 274 886 322 903 354 C919 384 901 417 874 431 C863 438 862 452 845 459 C830 466 812 453 801 468 L642 468 L642 318 L598 318 Z"
   },
   sa: {
     fill: "#f9c43a",
@@ -173,30 +173,30 @@ const MAP_REGIONS = {
   tas: {
     fill: "#16aeb8",
     labelX: 735,
-    labelY: 676,
-    tokenX: 678,
-    tokenY: 680,
+    labelY: 675,
+    tokenX: 672,
+    tokenY: 678,
     tokenWidth: 145,
     infoX: 830,
     infoY: 612,
     infoWidth: 150,
-    calloutLine: "752,671 795,671 823,641",
+    calloutLine: "750,672 795,672 823,641",
     callout: true,
-    d: "M693 662 C718 641 757 644 782 664 C774 697 736 722 700 705 C681 696 678 675 693 662 Z"
+    d: "M676 650 C700 632 740 634 774 650 C792 659 791 680 770 694 C746 710 724 724 704 704 C686 687 666 668 676 650 Z"
   },
   act: {
     fill: "#c75a70",
-    labelX: 811,
-    labelY: 548,
-    tokenX: 825,
-    tokenY: 525,
+    labelX: 902,
+    labelY: 523,
+    tokenX: 835,
+    tokenY: 512,
     tokenWidth: 135,
-    infoX: 838,
-    infoY: 474,
+    infoX: 875,
+    infoY: 470,
     infoWidth: 158,
-    calloutLine: "811,548 842,548 866,518",
+    calloutLine: "848,544 878,544 895,520",
     callout: true,
-    d: "M798 532 C803 519 825 519 830 533 C835 548 822 561 806 556 C797 553 793 541 798 532 Z"
+    d: "M835 535 C841 523 859 527 862 541 C865 555 850 563 838 556 C831 552 829 542 835 535 Z"
   }
 };
 
@@ -580,11 +580,10 @@ function MapInfoLabel({ state, callout = false }) {
   );
 }
 
-function MapCompactLabel({ state, showPopulation = true }) {
+function MapCompactLabel({ state, callout = false }) {
   return (
-    <div className="map-compact-label">
+    <div className={`map-compact-label ${callout ? "callout" : ""}`}>
       <div className="map-code">{state.short}</div>
-      {showPopulation && <div className="map-pop">{formatNumber(state.population)}</div>}
     </div>
   );
 }
@@ -620,7 +619,7 @@ function AustraliaMap({
           Tasman Sea
         </text>
         <path
-          d="M392 156 C425 126 433 96 470 86 C489 81 506 95 528 76 C560 52 598 61 622 83 C641 102 623 120 648 139 C671 126 685 66 704 24 C727 43 734 92 727 124 C748 117 771 136 779 159 C819 172 842 205 854 247 C882 274 886 322 903 354 C919 384 901 417 874 431 C863 438 862 452 845 459 C870 476 874 514 858 546 C846 571 821 598 790 610 C779 640 747 656 711 652 C681 649 656 633 636 613 C620 631 596 623 579 602 C594 579 616 560 642 547 C619 558 598 577 582 602 C563 602 544 586 535 562 C523 595 503 603 486 573 C469 540 435 522 392 507 C377 515 363 525 344 523 C315 519 294 521 270 543 C252 560 213 570 190 549 C176 535 153 533 148 514 C132 519 119 510 119 493 C119 468 103 454 91 437 C78 419 78 398 68 381 C54 358 53 332 66 309 C57 292 61 268 77 263 C74 250 80 236 91 232 C114 224 139 206 168 185 C187 171 191 149 212 141 C230 134 232 113 250 103 C278 92 315 101 354 117 C371 125 374 140 392 156 Z"
+          d="M392 156 C410 135 416 109 440 96 C453 88 464 105 478 81 C492 51 511 69 525 48 C547 15 596 45 622 78 C638 101 622 122 648 139 C672 119 686 57 706 12 C730 45 733 99 724 128 C751 119 771 139 779 159 C819 172 842 205 854 247 C882 274 886 322 903 354 C919 384 901 417 874 431 C863 438 862 452 845 459 C870 476 874 514 858 546 C846 571 821 598 790 610 C779 640 747 656 711 652 C681 649 656 633 636 613 C620 631 596 623 579 602 C594 579 616 560 642 547 C619 558 598 577 582 602 C563 602 544 586 535 562 C523 595 503 603 486 573 C469 540 435 522 392 507 C377 515 363 525 344 523 C315 519 294 521 270 543 C252 560 213 570 190 549 C176 535 153 533 148 514 C132 519 119 510 119 493 C119 468 103 454 91 437 C78 419 78 398 68 381 C54 358 53 332 66 309 C57 292 61 268 77 263 C74 250 80 236 91 232 C114 224 139 206 168 185 C187 171 191 149 212 141 C230 134 232 113 250 103 C278 92 315 101 354 117 C371 125 374 140 392 156 Z"
           fill="rgba(255, 253, 247, 0.46)"
           stroke="rgba(27, 43, 52, 0.1)"
           strokeWidth="18"
@@ -633,7 +632,7 @@ function AustraliaMap({
           const isSelected = !challenge && selectedId === state.id;
           const ariaLabel = challenge
             ? `Unlabelled map region ${index + 1}`
-            : `${state.name}, ${state.type}, capital ${state.capital}, population ${formatNumber(state.population)}`;
+            : `${state.name}, ${state.type}, capital ${state.capital}`;
 
           return (
             <g
@@ -663,7 +662,7 @@ function AustraliaMap({
             >
               <title>{challenge ? `Unlabelled map region ${index + 1}` : state.name}</title>
               <path d={region.d} />
-              {!challenge && region.callout && !compact && (
+              {!challenge && region.callout && (
                 <polyline
                   className="map-callout-line"
                   points={region.calloutLine}
@@ -672,17 +671,13 @@ function AustraliaMap({
               )}
               {!challenge && (
                 <foreignObject
-                  x={compact ? region.labelX - 46 : region.infoX}
-                  y={compact ? region.labelY - 31 : region.infoY}
-                  width={compact ? 92 : region.infoWidth}
-                  height={compact ? 70 : 152}
+                  x={region.labelX - 58}
+                  y={region.labelY - 34}
+                  width="116"
+                  height="76"
                   pointerEvents="none"
                 >
-                  {compact ? (
-                    <MapCompactLabel state={state} showPopulation={!region.callout} />
-                  ) : (
-                    <MapInfoLabel state={state} callout={region.callout} />
-                  )}
+                  <MapCompactLabel state={state} callout={region.callout} />
                 </foreignObject>
               )}
               {challenge && placedTokens.length > 0 && (
@@ -869,6 +864,19 @@ function LabelChallenge({ onStatsChange, onSelectState }) {
   );
 }
 
+function ArrowIcon({ direction }) {
+  const path =
+    direction === "up"
+      ? "M12 3 L4.5 11 H8.5 V21 H15.5 V11 H19.5 Z"
+      : "M12 21 L4.5 13 H8.5 V3 H15.5 V13 H19.5 Z";
+
+  return (
+    <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" className="h-5 w-5" role="img">
+      <path d={path} fill="currentColor" />
+    </svg>
+  );
+}
+
 function RankingGame({ completed, onComplete }) {
   const initialOrders = useMemo(
     () => ({
@@ -982,19 +990,19 @@ function RankingGame({ completed, onComplete }) {
                       type="button"
                       onClick={() => moveItem(index, -1)}
                       disabled={index === 0}
-                      className="h-10 w-10 rounded-lg border border-ink/10 bg-white font-black text-ink disabled:opacity-35"
+                      className="flex h-10 w-10 items-center justify-center rounded-lg border border-ink/10 bg-white text-ink transition hover:bg-sky-50 disabled:opacity-35"
                       aria-label={`Move ${state.name} higher`}
                     >
-                      ↑
+                      <ArrowIcon direction="up" />
                     </button>
                     <button
                       type="button"
                       onClick={() => moveItem(index, 1)}
                       disabled={index === currentOrder.length - 1}
-                      className="h-10 w-10 rounded-lg border border-ink/10 bg-white font-black text-ink disabled:opacity-35"
+                      className="flex h-10 w-10 items-center justify-center rounded-lg border border-ink/10 bg-white text-ink transition hover:bg-sky-50 disabled:opacity-35"
                       aria-label={`Move ${state.name} lower`}
                     >
-                      ↓
+                      <ArrowIcon direction="down" />
                     </button>
                   </div>
                 </div>
